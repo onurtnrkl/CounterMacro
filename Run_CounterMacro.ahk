@@ -6,14 +6,14 @@ Loop, Files, *.txt
     Key := A_Index
     Value := A_LoopFileName
     Map[Key] := Value
-    Hotkey, %Key% & Up, CounterKeyUp
-    Hotkey, %Key% & Down, CounterKeyDown
+    Hotkey, Up & %Key%, CounterKeyUp
+    Hotkey, Down & %Key%, CounterKeyDown
 }
 Exit
 
 UpdateCounter(key, increase)
 {
-    Index := SubStr(key, 1, 1)
+    Index := SubStr(key, -1)
     File := A_WorkingDir . "\" . Map[Index]
     FileRead, Counter, %File%
 
